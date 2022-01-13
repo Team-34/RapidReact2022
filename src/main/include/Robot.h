@@ -10,11 +10,11 @@
 #include <frc/smartdashboard/SendableChooser.h>
 
 #include "subsystems/SwerveDrive.h"
-#include "utils/T34_XboxController.h"
+#include "utils/XboxController.h"
 #include "utils/RampLimiter.h"
 
+
 class Robot : public frc::TimedRobot {
-    
 public:
     void RobotInit() override;
     void RobotPeriodic() override;
@@ -33,15 +33,15 @@ private:
     const std::string kAutoNameCustom = "My Auto";
     std::string m_autoSelected;
 
-    SwerveDrive * m_swerve_drive;
-    T34_XboxController * m_driver_ctrl;
-    T34_XboxController * m_mech_ctrl;
+    t34::SwerveDrive * m_swerve_drive;
+    t34::XboxController * m_driver_ctrl;
+    t34::XboxController * m_mech_ctrl;
+
+    t34::RampLimiter m_x_limiter;
+    t34::RampLimiter m_y_limiter;
+    t34::RampLimiter m_r_limiter; 
 
     bool m_sheild_wall_on;
     bool m_ramp_limiter_on;
-
-    RampLimiter m_x_limiter;
-    RampLimiter m_y_limiter;
-    RampLimiter m_r_limiter; 
-
 };
+

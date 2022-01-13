@@ -6,42 +6,46 @@
 #include "subsystems/SwerveModule.h"
 
 
-enum class DriveMode {
-    RobotCentric,
-    FieldOriented
-};
+namespace t34 {
 
-class SwerveDrive {
-public:
-    static SwerveDrive * GetInstance();
-    ~SwerveDrive();
+    enum class DriveMode {
+        RobotCentric,
+        FieldOriented
+    };
 
-    AHRS * GetGyro();
-    void ZeroYaw();
-    
-    void SetDriveMode(DriveMode dm);
-    void ToggleDriveMode();
-    
-    void SetDriveBrake(bool on = true);
-    void ToggleDriveBrake();
-    
-    void Drive(double x, double y, double r);
-    void Sheild_Wall();
-    void ToggleSpeed();
+    class SwerveDrive {
+    public:
+        static SwerveDrive * getInstance();
+        ~SwerveDrive();
+
+        AHRS * getGyro();
+        void zeroYaw();
+        
+        void setDriveMode(DriveMode dm);
+        void toggleDriveMode();
+        
+        void setDriveBrake(bool on = true);
+        void toggleDriveBrake();
+        
+        void drive(double x, double y, double r);
+        void sheildWall();
+        void toggleSpeed();
 
 
-private:
-    SwerveDrive();
-    void PutMode();
+    private:
+        SwerveDrive();
+        void putMode();
 
-    AHRS * m_gyro;
-    DriveMode m_mode;
-    
-    SwerveModule m_lf;
-    SwerveModule m_la;
-    SwerveModule m_rf;
-    SwerveModule m_ra;
-    double m_db;
-    double m_speed;
+        AHRS * m_gyro;
+        DriveMode m_mode;
+        
+        SwerveModule m_lf;
+        SwerveModule m_la;
+        SwerveModule m_rf;
+        SwerveModule m_ra;
+        double m_db;
+        double m_speed;
+    };
 
-};
+}
+
